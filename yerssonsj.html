@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yersson Sánchez — Chef & Consultor Gastronómico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15181B;
+    --paper:#F3EFE4;
+    --paper-2:#E9E3D3;
+    --copper:#A65A2E;
+    --copper-dark:#7E4322;
+    --olive:#6F7350;
+    --muted:#6b6558;
+    --line: rgba(21,24,27,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:600; margin:0; line-height:1.12; letter-spacing:-0.01em; }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  ::selection{ background:var(--copper); color:var(--paper); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--copper); outline-offset:3px; }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 28px; }
+
+  /* Eyebrow — numbered section label, sin caja ni línea punteada */
+  .eyebrow{
+    display:flex; align-items:baseline; gap:10px; margin-bottom:20px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  }
+  .eyebrow .num{ color:var(--copper); font-weight:600; }
+  .eyebrow .label{ color:var(--muted); }
+  .enfoque .eyebrow .num{ color:var(--olive); }
+  .enfoque .eyebrow .label{ color:rgba(243,239,228,0.6); }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,239,228,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .wordmark{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; letter-spacing:0.01em; text-decoration:none; }
+  .wordmark span{ color:var(--copper); }
+  .nav-links{ display:flex; gap:32px; list-style:none; margin:0; padding:0; font-size:14px; }
+  .nav-links a{ text-decoration:none; opacity:0.75; transition:opacity .2s ease; }
+  .nav-links a:hover{ opacity:1; }
+  @media (max-width:760px){ .nav-links{ display:none; } }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:13px 22px; border-radius:2px; font-size:14.5px; font-weight:500;
+    border:1px solid var(--ink); transition:all .2s ease; cursor:pointer;
+  }
+  .btn:hover{ background:var(--copper); border-color:var(--copper); }
+  .link-arrow{
+    display:inline-flex; align-items:center; gap:7px; text-decoration:none;
+    font-size:14.5px; font-weight:500; border-bottom:1px solid var(--ink); padding-bottom:3px;
+    transition:all .2s ease;
+  }
+  .link-arrow:hover{ border-color:var(--copper); color:var(--copper-dark); }
+
+  /* Hero */
+  .hero{ padding:88px 0 64px; }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr 1fr; gap:64px; align-items:center; }
+  .hero h1{ font-size:clamp(32px, 4.6vw, 50px); }
+  .hero h1 em{ font-style:italic; color:var(--copper); font-weight:500; }
+  .hero p.lead{ margin-top:22px; font-size:18px; max-width:46ch; color:#3a352d; }
+  .hero-actions{ display:flex; align-items:center; gap:24px; margin-top:36px; flex-wrap:wrap; }
+
+  .stat-rail{ display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:56px; padding-top:22px; border-top:1px solid var(--line); }
+  .stat .k{ font-family:'IBM Plex Mono', monospace; font-size:21px; color:var(--copper-dark); font-weight:600; }
+  .stat .l{ font-size:12.5px; color:var(--muted); margin-top:4px; line-height:1.4; }
+
+  .frame{ position:relative; aspect-ratio:4/5; border-radius:3px; background:var(--paper-2); overflow:hidden; }
+  .frame.wide{ aspect-ratio:5/4; }
+  .frame img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+  section{ padding:92px 0; }
+  .section-head{ margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(25px, 3vw, 34px); max-width:22ch; }
+
+  /* Diagnóstico */
+  .banded{ background:var(--paper-2); }
+  .problems-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:36px; }
+  .problem{ padding-top:20px; border-top:1px solid var(--line); }
+  .problem h4{ font-size:17px; font-weight:600; margin-bottom:8px; }
+  .problem p{ font-size:14.5px; margin:0; color:#4a453b; }
+  @media (max-width:700px){ .problems-grid{ grid-template-columns:1fr; gap:28px; } }
+
+  /* Sobre mí */
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start; }
+  .about p{ margin:0 0 16px; color:#2c2822; }
+
+  .line-list{ list-style:none; padding:0; margin:26px 0 0; border-top:1px solid var(--line); }
+  .line-list li{ display:flex; justify-content:space-between; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid var(--line); font-size:14.5px; }
+  .line-list li span:first-child{ color:var(--muted); }
+  .line-list li span:last-child{ font-family:'IBM Plex Mono', monospace; text-align:right; }
+  .line-list a{ font-family:'IBM Plex Mono', monospace; text-decoration:none; color:var(--copper-dark); }
+  .line-list a:hover{ text-decoration:underline; }
+
+  /* Servicios */
+  .services-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:64px; }
+  .service h3{ font-size:22px; margin-bottom:12px; }
+  .service .tag{ font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--copper-dark); margin-bottom:10px; display:block; }
+  .service > p{ font-size:15px; color:#3a352d; margin:0; }
+  .service ul{ list-style:none; margin:20px 0 0; padding:0; }
+  .service li{ position:relative; padding-left:20px; margin-bottom:11px; font-size:14.5px; color:#2c2822; }
+  .service li::before{ content:"–"; position:absolute; left:0; color:var(--copper-dark); }
+  @media (max-width:760px){ .services-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  /* Enfoque */
+  .enfoque{ background:var(--ink); color:var(--paper); }
+  .enfoque blockquote{ margin:0; font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:clamp(22px, 3vw, 33px); line-height:1.4; max-width:24ch; }
+  .enfoque .pillars{ display:grid; grid-template-columns:repeat(3, 1fr); gap:32px; margin-top:52px; padding-top:28px; border-top:1px solid rgba(243,239,228,0.14); }
+  .enfoque .pillar h4{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--olive); margin:0 0 10px; font-weight:500; }
+  .enfoque .pillar p{ margin:0; font-size:14.5px; color:rgba(243,239,228,0.78); }
+  @media (max-width:760px){ .enfoque .pillars{ grid-template-columns:1fr; gap:24px; } }
+
+  /* Portafolio */
+  .portfolio-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:40px 32px; }
+  .dish-head{ display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; gap:12px; }
+  .dish-head span:first-child{ font-family:'Fraunces', serif; font-weight:600; font-size:17px; }
+  .dish-head .tag{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--copper-dark); white-space:nowrap; }
+  .dish-desc{ margin:6px 0 0; font-size:14px; color:var(--muted); line-height:1.55; }
+  @media (max-width:640px){ .portfolio-grid{ grid-template-columns:1fr; } }
+
+  /* Contacto */
+  .contact-inner{ max-width:520px; }
+  .contact .lead{ margin-top:16px; font-size:17px; color:#3a352d; max-width:42ch; }
+  .contact .btn{ margin-top:32px; }
+
+  footer{ padding:40px 0 56px; text-align:center; font-size:12px; color:var(--muted); font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em; }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:900px){
+    .hero-grid, .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .stat-rail{ grid-template-columns:1fr 1fr; gap:24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="wordmark">Y. Sánchez<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#portafolio">Portafolio</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn">Agendar asesoría</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="num">01</span><span class="label">Yersson Sánchez · Chef &amp; Consultor</span></div>
+        <h1>Estandarizo tu cocina. <em>Maximizo tu rentabilidad.</em></h1>
+        <p class="lead">Cocino y asesoro cocinas que quieren dejar de improvisar: costos claros, procesos ordenados y un producto que sostiene su nivel todos los días — no solo el día bueno.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/18297098911" class="btn" target="_blank" rel="noopener">Agendar diagnóstico por WhatsApp</a>
+          <a href="#portafolio" class="link-arrow">Ver el trabajo →</a>
+        </div>
+        <div class="stat-rail">
+          <div class="stat"><div class="k">12</div><div class="l">Restaurantes bajo supervisión directa</div></div>
+          <div class="stat"><div class="k">RD$</div><div class="l">Costeo y escandallo profesional</div></div>
+          <div class="stat"><div class="k">5+</div><div class="l">Años liderando operaciones hoteleras</div></div>
+        </div>
+      </div>
+      <div class="frame">
+        <img src="images/hero.jpg" alt="Tartar de atún, plato de autor por Yersson Sánchez">
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGNÓSTICO -->
+  <section class="banded" id="diagnostico">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="num">02</span><span class="label">Diagnóstico rápido</span></div>
+        <h2>Desafíos operativos que resuelvo en tu cocina</h2>
+      </div>
+      <div class="problems-grid reveal">
+        <div class="problem">
+          <h4>Fuga de margen</h4>
+          <p>Falta de escandallos precisos y precios de insumos que varían sin control, comiéndose la utilidad del negocio.</p>
+        </div>
+        <div class="problem">
+          <h4>Inconsistencia operativa</h4>
+          <p>Platos que cambian de sabor o presentación según quién esté en el pase, por falta de fichas técnicas oficiales.</p>
+        </div>
+        <div class="problem">
+          <h4>Descontrol de inventario</h4>
+          <p>Mermas que nadie mide y sobrestock de insumos que comprometen el flujo de caja del establecimiento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="wrap about-grid">
+      <div class="frame reveal">
+        <img src="images/retrato.jpg" alt="Chef Yersson Sánchez">
+      </div>
+      <div class="reveal">
+        <div class="eyebrow"><span class="num">03</span><span class="label">Sobre mí</span></div>
+        <h2>De la línea de producción a la mesa del cliente</h2>
+        <p>Hoy superviso 12 restaurantes dentro de la cadena Hotel Bávaro Princess: reviso y actualizo menús, coordino los equipos de cada punto de venta y sostengo los estándares de higiene, calidad y control en todos ellos. Antes, como Chef de Especialidades en Hard Rock Hotel &amp; Casino Punta Cana, abrí y operé un restaurante con capacidad para 300 comensales.</p>
+        <p>Esa escala es exactamente lo que traigo a la consultoría: no es teoría, es la misma disciplina operativa que aplico todos los días — recetas con costo real, menús que sostienen margen y equipos que no dependen de la memoria de una sola persona.</p>
+        <ul class="line-list">
+          <li><span>Rol actual</span><span>Asistente Ejecutivo · Bávaro Princess</span></li>
+          <li><span>Alcance</span><span>12 restaurantes supervisados</span></li>
+          <li><span>Formación</span><span>INFOTEP · Cocinero A</span></li>
+          <li><span>Trayectoria</span><a href="https://www.linkedin.com/in/yerssonsanchez-21552b127" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="banded" id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="num">04</span><span class="label">Propuesta de valor</span></div>
+        <h2>Servicios de asesoría y gastronomía</h2>
+      </div>
+      <div class="services-grid reveal">
+        <div class="service">
+          <span class="tag">Para restaurantes y hoteles</span>
+          <h3>Consultoría operativa &amp; costeo</h3>
+          <p>Estructuración técnica para elevar el rendimiento del negocio sin perder el nivel gastronómico.</p>
+          <ul>
+            <li>Diseño e implementación de fichas técnicas</li>
+            <li>Costeo de recetas y optimización de precios en menú</li>
+            <li>Estandarización de procesos para brigadas de cocina</li>
+            <li>Optimización de servicio buffet y cocina de autor</li>
+          </ul>
+        </div>
+        <div class="service">
+          <span class="tag">Para clientes privados</span>
+          <h3>Experiencias culinarias de autor</h3>
+          <p>Propuestas exclusivas diseñadas a la medida para eventos privados o cenas de pasos.</p>
+          <ul>
+            <li>Experiencia omakase y cocina de vanguardia</li>
+            <li>Cenas maridaje privadas de varios tiempos</li>
+            <li>Diseño de menús exclusivos para eventos especiales</li>
+            <li>Supervisión culinaria directa en locación</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENFOQUE -->
+  <section class="enfoque">
+    <div class="wrap reveal">
+      <div class="eyebrow"><span class="num">05</span><span class="label">Enfoque</span></div>
+      <blockquote>"Una cocina se nota profesional cuando el nivel no cambia según quién esté mirando."</blockquote>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Criterio</h4>
+          <p>Opiniones claras sobre técnica, producto y oficio — no consenso fácil ni tendencia por tendencia.</p>
+        </div>
+        <div class="pillar">
+          <h4>Proceso</h4>
+          <p>Lo que pasa antes del pase: mise en place, control de merma, disciplina de cocina real.</p>
+        </div>
+        <div class="pillar">
+          <h4>Cercanía</h4>
+          <p>Cocina que se explica, no que se esconde. El comensal y el equipo entienden el porqué.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTAFOLIO -->
+  <section id="portafolio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow"><span class="num">06</span><span class="label">Portafolio</span></div>
+        <h2>Trabajo reciente</h2>
+      </div>
+      <div class="portfolio-grid reveal">
+        <figure>
+          <div class="frame wide">
+            <img src="images/plato-langosta.jpg" alt="Langosta a la parrilla con mantequilla de hierbas y limón asado">
+          </div>
+          <figcaption>
+            <div class="dish-head"><span>Langosta a la parrilla</span><span class="tag">Mariscos</span></div>
+            <p class="dish-desc">Con mantequilla de hierbas, limón asado y rúcula fresca.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="frame wide">
+            <img src="images/plato-cordero.jpg" alt="Chuleta de cordero a la parrilla con puré de butternut squash">
+          </div>
+          <figcaption>
+            <div class="dish-head"><span>Chuleta de cordero</span><span class="tag">Carnes</span></div>
+            <p class="dish-desc">A la parrilla, con puré de butternut squash y pesto de hierbas.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="frame wide">
+            <img src="images/plato-pulpo.jpg" alt="Pulpo a baja temperatura con papa confitada, crocante de tinta y tapioca">
+          </div>
+          <figcaption>
+            <div class="dish-head"><span>Pulpo a baja temperatura</span><span class="tag">Mariscos</span></div>
+            <p class="dish-desc">Con papa confitada, crocante de tinta y perlas de tapioca.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <div class="frame wide">
+            <img src="images/plato-ossobuco.jpg" alt="Ossobuco a baja temperatura con cebollino tierno">
+          </div>
+          <figcaption>
+            <div class="dish-head"><span>Ossobuco a baja temperatura</span><span class="tag">Carnes</span></div>
+            <p class="dish-desc">Con cebollino tierno, cebollitas perla salteadas y su jugo reducido.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="banded contact" id="contacto">
+    <div class="wrap contact-inner">
+      <div class="reveal">
+        <div class="eyebrow"><span class="num">07</span><span class="label">Contacto</span></div>
+        <h2>Hablemos de tu cocina</h2>
+        <p class="lead">Cuéntame qué necesitas — diagnóstico operativo, costeo de menú o una experiencia privada.</p>
+
+        <ul class="line-list">
+          <li><span>WhatsApp</span><a href="https://wa.me/18297098911" target="_blank" rel="noopener">+1 (829) 709-8911</a></li>
+          <li><span>Correo</span><a href="mailto:yerssonsj@gmail.com">yerssonsj@gmail.com</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/yerssonsanchez-21552b127" target="_blank" rel="noopener">Ver perfil ↗</a></li>
+        </ul>
+
+        <a href="https://wa.me/18297098911" target="_blank" rel="noopener" class="btn">Escríbeme por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Yersson Sánchez — Chef &amp; Consultor Gastronómico
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
