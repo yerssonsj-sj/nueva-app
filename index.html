@@ -158,6 +158,147 @@
     .hero-grid, .about-grid{ grid-template-columns:1fr; gap:40px; }
     .stat-rail{ grid-template-columns:1fr 1fr; gap:24px 20px; }
   }
+
+  /* Ajustes móviles */
+  @media (max-width: 640px){
+    .wrap{
+      width: min(100% - 32px, 1120px);
+    }
+
+    header{
+      position: relative;
+    }
+
+    .nav{
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 18px 0;
+    }
+
+    .wordmark{
+      font-size: 20px;
+    }
+
+    .nav-links{
+      order: 3;
+      width: 100%;
+      justify-content: flex-start;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a{
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .nav > .btn{
+      margin-left: auto;
+      padding: 10px 14px;
+      font-size: 12.5px;
+    }
+
+    .hero{
+      padding: 54px 0 48px;
+    }
+
+    .hero-grid{
+      gap: 34px;
+    }
+
+    .hero h1{
+      font-size: clamp(30px, 9vw, 40px);
+      line-height: 1.08;
+    }
+
+    .hero p.lead{
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .hero-actions{
+      align-items: stretch;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-actions .btn,
+    .hero-actions .link-arrow{
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .stat-rail{
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 38px;
+    }
+
+    .stat{
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .frame{
+      aspect-ratio: 4 / 5;
+    }
+
+    section{
+      padding: 64px 0;
+    }
+
+    .section-head{
+      margin-bottom: 32px;
+    }
+
+    .section-head h2{
+      font-size: 28px;
+      max-width: none;
+    }
+
+    .dish-head{
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .dish-head span:first-child{
+      font-size: 18px;
+    }
+
+    .line-list li{
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .line-list li span:last-child,
+    .line-list a{
+      text-align: left;
+      word-break: break-word;
+    }
+
+    .contact-inner{
+      max-width: none;
+    }
+
+    .contact h2{
+      font-size: 28px;
+    }
+
+    .contact .btn{
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    footer{
+      padding: 32px 16px 44px;
+      line-height: 1.6;
+    }
+  }
+
 </style>
 </head>
 <body>
