@@ -311,6 +311,11 @@
 
 
 /* FAQ */
+.faq-section .eyebrow .num{
+  color: var(--copper);
+  font-weight: 600;
+}
+
 .faq-section{
   padding: 110px 0;
 }
@@ -318,11 +323,11 @@
 .faq-container{
   max-width: 900px;
   margin-top: 52px;
-  border-top: 1px solid rgba(243,239,228,0.16);
+  border-top: 1px solid var(--line);
 }
 
 .faq-item{
-  border-bottom: 1px solid rgba(243,239,228,0.16);
+  border-bottom: 1px solid var(--line);
 }
 
 .faq-question{
@@ -338,7 +343,7 @@
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--paper);
+  color: var(--ink);
 }
 
 .faq-question::-webkit-details-marker{
@@ -374,7 +379,7 @@
   margin: 0;
   font-size: 15px;
   line-height: 1.75;
-  color: rgba(243,239,228,0.72);
+  color: var(--muted);
 }
 
 @media (max-width: 640px){
@@ -401,6 +406,37 @@
   }
 }
 
+
+
+/* Corrección de visibilidad FAQ */
+#faq,
+#faq .section-head,
+#faq .section-head .eyebrow,
+#faq .section-head .eyebrow .num,
+#faq .section-head .eyebrow .label,
+#faq .section-head h2,
+#faq .section-head .section-intro,
+#faq .faq-question,
+#faq .faq-answer,
+#faq .faq-answer p {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#faq .faq-question {
+  color: #15181B !important;
+  background: transparent !important;
+  -webkit-text-fill-color: #15181B !important;
+}
+
+#faq .faq-answer p {
+  color: #6b6558 !important;
+  -webkit-text-fill-color: #6b6558 !important;
+}
+
+#faq .faq-question::after {
+  color: #A65A2E !important;
+}
 
 /* Pilares — Sobre mí */
 .about .pillars{
